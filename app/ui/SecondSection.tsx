@@ -21,7 +21,7 @@ const SecondSection = () => {
             playsInline
             className="h-84 w-56 object-cover hidden md:block rounded-md border-gray-500"
           >
-            <source src="nature.mp4" type="video/mp4" />
+            <source src="travel2.mp4" type="video/mp4" />
             {/* <source src="your-video.webm" type="video/webm" /> */}
             Your browser does not support the video tag.
           </video>
