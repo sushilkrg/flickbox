@@ -1,13 +1,54 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import FileUpload from "../components/FileUpload";
+import { useSession } from "next-auth/react";
 
 const UplaodPage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [type, setType] = useState("public");
+  const [visibility, setVisibility] = useState("public");
+  const [videoUrl, setVideoUrl] = useState("");
 
-  const handleUpload = (e: React.FormEvent<HTMLFormElement>) => {
+  // const getUserSession = () => {
+  // const { data: session, status } = useSession();
+  // console.log("session.user", session?.user);
+  // console.log("status", status);
+  // };
+  const { data: session, status } = useSession();
+
+  useEffect(() => {
+    console.log("session.user", session?.user);
+    console.log("status", status);
+  }, [session]);
+
+  const handleUploadSuccess = async (uploadResponse: any) => {
+    const { url } = uploadResponse;
+    setVideoUrl(url);
+  };
+
+  const handleUpload = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const res = await fetch("/api/videos", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title,
+        description,
+        visibility,
+        videoUrl,
+        // thumbnailUrl: `${videoUrl}/ik-thumbnail.jpg`,
+        // user: session?.user.id,
+      }),
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+      alert("Video saved successfully!");
+      console.log("Saved video:", data.video);
+    } else {
+      alert("Error: " + data.error);
+    }
 
     console.log("video uploaded");
   };
@@ -50,13 +91,16 @@ const UplaodPage = () => {
           <select
             id="type"
             name="type"
+            defaultValue={visibility}
             className="border border-white py-2 rounded-md px-1 "
+            onChange={(e) => setVisibility(e.target.value)}
           >
             <option value="public">Public</option>
             <option value="private">Private</option>
           </select>
         </div>
-        <div className="flex flex-col w-full md:w-2xl">
+        <FileUpload onUploadSuccess={handleUploadSuccess} />
+        {/* <div className="flex flex-col w-full md:w-2xl">
           <label htmlFor="video">Upload Video</label>
           <input
             type="file"
@@ -65,12 +109,18 @@ const UplaodPage = () => {
             required
             className="border border-white rounded-md py-2 px-1 "
           />
-        </div>
+        </div> */}
+        {videoUrl && (
+          <div>
+            <h2>Preview</h2>
+            <video src={videoUrl} controls width="400" />
+          </div>
+        )}
         <button
           type="submit"
           className="bg-amber-50 hover:bg-amber-100 text-gray-800 px-8 py-2 rounded-md cursor-pointer font-bold w-full md:w-48"
         >
-          Save Changes
+          Upload
         </button>
       </form>
     </div>

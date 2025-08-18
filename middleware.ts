@@ -15,15 +15,15 @@ export default withAuth(
           pathname === "/login" ||
           pathname === "/register" ||
           pathname === "/videos" ||
-          pathname === "/" ||
+          pathname === "/"
 
           // remove few later
-          pathname === "/feed" ||
-          pathname === "/dashboard" ||
-          pathname === "/upload" ||
-          pathname.startsWith("/edit") ||
-          pathname.startsWith("/details") ||
-          pathname.startsWith("/api/videos")
+          // pathname === "/feed" ||
+          // pathname === "/dashboard" ||
+          // pathname === "/upload" ||
+          // pathname.startsWith("/edit") ||
+          // pathname.startsWith("/details") ||
+          // pathname.startsWith("/api/videos")
         ) {
           return true;
         }

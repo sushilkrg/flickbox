@@ -1,4 +1,5 @@
-import mongoose, { model, models, Schema } from "mongoose";
+import mongoose, { model, models, Schema, Types } from "mongoose";
+import { IUser } from "./User";
 
 export const VIDEO_DIMENSIONS = {
   width: 1080,
@@ -12,7 +13,8 @@ export interface IVideo {
   title: string;
   description: string;
   videoUrl: string;
-  thumbnailUrl: string;
+  thumbnailUrl?: string;
+  user?: Types.ObjectId | IUser;
   controls?: boolean;
   visibility: Visibility;
   transformation?: {
@@ -27,8 +29,9 @@ const videoSchema = new Schema<IVideo>(
     title: { type: String, required: true },
     description: { type: String, required: true },
     videoUrl: { type: String, required: true },
-    thumbnailUrl: { type: String, required: true },
+    thumbnailUrl: { type: String },
     controls: { type: Boolean, default: true },
+    user: { type: Schema.Types.ObjectId, ref: "User", required: true },
     visibility: {
       type: String,
       enum: ["public", "private"],

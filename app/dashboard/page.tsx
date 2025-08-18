@@ -1,7 +1,13 @@
+"use client";
 import React from "react";
 import VideoComponent from "../components/Video";
+import { useSession } from "next-auth/react";
 
 const Dashboard = () => {
+  const { data: session, status } = useSession();
+  console.log("session.user", session?.user);
+  console.log("status", status);
+
   return (
     <div className="container mx-auto">
       <h1 className="text-2xl m-4">Dashboard</h1>
@@ -15,7 +21,7 @@ const Dashboard = () => {
           <p>Public Posts</p>
         </div>
         <div className="flex items-center justify-center flex-col border rounded-md p-4">
-          <p>10</p >
+          <p>10</p>
           <p>Private Posts</p>
         </div>
       </div>

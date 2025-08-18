@@ -9,32 +9,21 @@ import {
 } from "@imagekit/next";
 import { useRef, useState } from "react";
 
-// UploadExample component demonstrates file uploading using ImageKit's Next.js SDK.
-const FileUpload = () => {
-  // State to keep track of the current upload progress (percentage)
+const FileUpload = ({
+  onUploadSuccess,
+}: {
+  onUploadSuccess: (res: any) => void;
+}) => {
   const [progress, setProgress] = useState(0);
-
-  // Create a ref for the file input element to access its files easily
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Create an AbortController instance to provide an option to cancel the upload if needed.
   const abortController = new AbortController();
 
-  /**
-   * Authenticates and retrieves the necessary upload credentials from the server.
-   *
-   * This function calls the authentication API endpoint to receive upload parameters like signature,
-   * expire time, token, and publicKey.
-   *
-   * @returns {Promise<{signature: string, expire: string, token: string, publicKey: string}>} The authentication parameters.
-   * @throws {Error} Throws an error if the authentication request fails.
-   */
   const authenticator = async () => {
     try {
-      // Perform the request to the upload authentication endpoint.
       const response = await fetch("/api/auth/imagekit-upload-auth");
       if (!response.ok) {
-        // If the server response is not successful, extract the error text for debugging.
         const errorText = await response.text();
         throw new Error(
           `Request failed with status ${response.status}: ${errorText}`
@@ -101,6 +90,7 @@ const FileUpload = () => {
         abortSignal: abortController.signal,
       });
       console.log("Upload response:", uploadResponse);
+      onUploadSuccess(uploadResponse);
     } catch (error) {
       // Handle specific error types provided by the ImageKit SDK.
       if (error instanceof ImageKitAbortError) {
