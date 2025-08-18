@@ -43,6 +43,6 @@ export const config = {
      * - favicon.ico (favicon file)
      * - public folder
      */
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:jpg|jpeg|png|gif|webp|svg|mp4|webm|ogg)$).*)",
+    "/((?!api/videos/free-videos|_next/static|_next/image|favicon.ico|.*\\.(?:jpg|jpeg|png|gif|webp|svg|mp4|webm|ogg)$).*)",
   ],
 };

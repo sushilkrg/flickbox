@@ -5,7 +5,6 @@ import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-
   const session = await getServerSession(authOptions);
   try {
     await connectToDatabase();
@@ -36,12 +35,14 @@ export async function POST(req: Request) {
 export async function GET(req: Request) {
   try {
     await connectToDatabase();
-    const videos = await Video.find().sort({ createdAt: -1 }).lean();
+    const videos = await Video.find({ visibility: "public" })
+      .sort({ createdAt: -1 })
+      .lean();
 
     if (!videos || videos.length === 0) {
       return NextResponse.json([], { status: 200 });
     }
-    return NextResponse.json(videos);
+    return NextResponse.json(videos, { status: 200 });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
