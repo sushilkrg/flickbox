@@ -34,7 +34,7 @@ const Videos = () => {
           <VideoCard key={video._id} video={video} />
         ))}
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-8">
         <button className="text-blue-700 pr-2 cursor-pointer text-l"
           onClick={() => router.push("/login")}
         >
