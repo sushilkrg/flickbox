@@ -1,15 +1,21 @@
 "use client";
 import React, { useState } from "react";
 
-const Search = () => {
+const Search = ({ setVideos }: any) => {
   const [searchValues, setSearchValues] = useState("");
-
-  const handleClick = (e: any) => {};
 
   const handleSearch = async (e: any) => {
     e.preventDefault();
     try {
-      // api call for search result
+      const res = await fetch(
+        `/api/videos?searchQuery=${searchValues.toLowerCase()}`,
+        {
+          method: "GET",
+        }
+      );
+
+      const data = await res.json();
+      setVideos(data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -18,7 +24,7 @@ const Search = () => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-4 md:mx-auto">
       <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
         <input
           type="text"
@@ -29,7 +35,7 @@ const Search = () => {
         />
         <button
           onClick={handleSearch}
-          className="bg-blue-600 text-white py-3 px-6 rounded-md shadow-md w-full md:w-auto"
+          className="bg-blue-600 text-white py-3 px-6 rounded-md shadow-md w-full md:w-auto cursor-pointer"
         >
           Search
         </button>

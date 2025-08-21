@@ -29,13 +29,17 @@ const Feed = () => {
   return (
     <div>
       <div className="flex items-center justify-center my-8">
-        <Search />
+        <Search setVideos={setVideos} />
       </div>
-      <div className="container mx-auto grid grid-cols-1 m-4 px-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {videos.map((video) => (
-          <VideoCard key={video._id} video={video} />
-        ))}
-      </div>
+      {!videos || videos.length === 0 ? (
+        <div className="text-center text-gray-500 py-8">No videos found.</div>
+      ) : (
+        <div className="container mx-auto grid grid-cols-1 m-4 px-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {videos.map((video) => (
+            <VideoCard key={video._id} video={video} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

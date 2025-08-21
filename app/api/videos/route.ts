@@ -35,9 +35,25 @@ export async function POST(req: Request) {
 export async function GET(req: Request) {
   try {
     await connectToDatabase();
-    const videos = await Video.find({ visibility: "public" })
-      .sort({ createdAt: -1 })
-      .lean();
+    // const videos = await Video.find({ visibility: "public" })
+    //   .sort({ createdAt: -1 })
+    //   .lean();
+    const { searchParams } = new URL(req.url);
+    const searchQuery = searchParams.get("searchQuery");
+
+    let query: Record<string, any> = { visibility: "public" };
+
+    if (searchQuery) {
+      query = {
+        ...query,
+        $or: [
+          { title: { $regex: searchQuery, $options: "i" } },
+          { description: { $regex: searchQuery, $options: "i" } },
+        ],
+      };
+    }
+
+    const videos = await Video.find(query).sort({ createdAt: -1 }).lean();
 
     if (!videos || videos.length === 0) {
       return NextResponse.json([], { status: 200 });
