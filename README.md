@@ -30,16 +30,16 @@ FlickBox is a modern **video sharing and storage web application** built with **
 
 ## 📸 Screenshots
 #### Landing page
-![alt text](flickbox-landing-page.png)
+<img width="1900" height="4725" alt="flickbox-landing-page" src="https://github.com/user-attachments/assets/3758b4df-998f-416d-bb54-6b25e839df5b" />
 
 #### Feed page
-![alt text](flickbox-feed.png)
+<img width="1900" height="983" alt="flickbox-feed" src="https://github.com/user-attachments/assets/c463de2b-0ddd-48a0-a3bc-8aba6083811e" />
 
 #### Dashboard page
-![alt text](flickbox-dashboard.png)
+<img width="1900" height="1178" alt="flickbox-dashboard" src="https://github.com/user-attachments/assets/539b6d52-06de-458e-83b2-6c73ab3b683d" />
 
 #### Upload page
-![alt text](flickbox-upload.png)
+<img width="1900" height="841" alt="flickbox-upload" src="https://github.com/user-attachments/assets/3c083735-ad4b-4348-8170-e0adad212059" />
 
 ---
 
