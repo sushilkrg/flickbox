@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎬 FlickBox
 
-## Getting Started
+FlickBox is a modern **video sharing and storage web application** built with **Next.js** and **TypeScript**, designed for seamless video management. It enables users to upload, share, search, and filter videos with ease. With **NextAuth authentication**, **MongoDB database**, and **ImageKit integration** for storage, optimization, and thumbnail generation, FlickBox delivers both performance and scalability.
 
-First, run the development server:
+---
 
+## 🚀 Features
+
+- 📂 **Video Upload & Storage** – Store videos securely with ImageKit.
+- ⚡ **Video Optimization & Compression** – Ensures faster playback and efficient storage.
+- 🖼️ **Automatic Thumbnail Generation** – Thumbnails are created for better previews.
+- 🔒 **Authentication** – Secure login and signup powered by **NextAuth**.
+- 🎛️ **Dashboard** – Manage all uploaded videos in one place.
+- 🔍 **Search & Filter** – Search videos by title/description and filter by visibility (public/private).
+- 🌐 **Responsive UI** – Optimized for both desktop and mobile devices.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend Framework**: [Next.js](https://nextjs.org/) (with App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Database**: [MongoDB](https://www.mongodb.com/)
+- **Authentication**: [NextAuth.js](https://next-auth.js.org/)
+- **Video Storage & Optimization**: [ImageKit](https://imagekit.io/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Deployment**: [Vercel](https://vercel.com/)
+
+---
+
+## 📸 Screenshots
+#### Landing page
+![alt text](flickbox-landing-page.png)
+
+#### Feed page
+![alt text](flickbox-feed.png)
+
+#### Dashboard page
+![alt text](flickbox-dashboard.png)
+
+#### Upload page
+![alt text](flickbox-upload.png)
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Clone the Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+git clone https://github.com/sushilkrg/flickbox.git
+cd flickbox
+```
+### 2. Install all packages and dependencies
+```bash
+pnpm install
+```
+### 3. Setup Envirnment Variables
+```bash
+MONGODB_URI="mongodb://localhost:27017/flickbox"
+NEXTAUTH_SECRET=""
+
+# imagekit configs
+NEXT_IMAGEKIT_PUBLIC_KEY=""
+NEXT_PUBLIC_URL_ENDPOINT=""
+IMAGEKIT_PRIVATE_KEY=""
+```
+### 4. Run the app
+```bash
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
+## ✍️ Author
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Sushil Kumar**  
+[Portfolio Website](https://sushilkumar-rho.vercel.app) · 
+[GitHub](https://github.com/sushilkrg)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ⭐️ Star the Repo
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you find this project helpful or inspiring, please consider giving it a ⭐️ on GitHub — it helps others discover the project and shows your support!
