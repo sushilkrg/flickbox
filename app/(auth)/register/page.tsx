@@ -34,7 +34,6 @@ const Register = () => {
         throw new Error(data.error || "Registration failed");
       }
 
-      console.log(data);
       router.push("/login");
     } catch (error) {
       console.error(error);
@@ -79,6 +78,7 @@ const Register = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
+              autoComplete="email"
               required
               className="w-full mt-1 text-black px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
@@ -96,6 +96,7 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
+              autoComplete="new-password"
               required
               className="w-full mt-1 text-black px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
@@ -105,7 +106,7 @@ const Register = () => {
               htmlFor="confirm-password"
               className="block font-semibold text-gray-700"
             >
-              Password
+              Confirm Password
             </label>
             <input
               type="password"
@@ -113,6 +114,7 @@ const Register = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Enter your password again"
+              autoComplete="new-password"
               required
               className="w-full mt-1 text-black px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
@@ -120,7 +122,7 @@ const Register = () => {
           <div>
             <button
               type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 "
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer"
             >
               Create Account
             </button>

@@ -13,10 +13,9 @@ const Feed = () => {
     });
 
     const data = await res.json();
-    setVideos(data);
 
     if (res.ok) {
-      console.log("Videos:", data);
+      setVideos(data);
     } else {
       alert("Error: " + data.error);
     }

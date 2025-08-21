@@ -7,9 +7,9 @@ import VideoCard from "../components/Video";
 const Dashboard = () => {
   const [videos, setVideos] = useState<IVideo[]>([]);
   const [videosCount, setVideosCount] = useState({
-    total: "",
-    public: "",
-    private: "",
+    total: 0,
+    public: 0,
+    private: 0,
   });
 
   async function getVideosCount() {
@@ -68,15 +68,15 @@ const Dashboard = () => {
       <h1 className="text-2xl m-4">Dashboard</h1>
       <div className="flex flex-row items-center justify-around">
         <div className="flex items-center justify-center flex-col border rounded-md p-4">
-          <p>{videosCount.total}</p>
+          <p>{videosCount.total || 0}</p>
           <p>Total Posts</p>
         </div>
         <div className="flex items-center justify-center flex-col border rounded-md p-4">
-          <p>{videosCount.public}</p>
+          <p>{videosCount.public || 0}</p>
           <p>Public Posts</p>
         </div>
         <div className="flex items-center justify-center flex-col border rounded-md p-4">
-          <p>{videosCount.private}</p>
+          <p>{videosCount.private || 0}</p>
           <p>Private Posts</p>
         </div>
       </div>

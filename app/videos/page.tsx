@@ -14,10 +14,9 @@ const Videos = () => {
     });
 
     const data = await res.json();
-    setVideos(data);
 
     if (res.ok) {
-      console.log("Videos:", data);
+      setVideos(data);
     } else {
       alert("Error: " + data.error);
     }
@@ -29,18 +28,25 @@ const Videos = () => {
 
   return (
     <div>
-      <div className="container mx-auto grid grid-cols-1 m-4 px-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {videos.map((video) => (
-          <VideoCard key={video._id} video={video} />
-        ))}
-      </div>
+      {!videos || videos.length === 0 ? (
+        <div className="text-gray-300 mt-12 text-center">
+          No videos available.
+        </div>
+      ) : (
+        <div className="container mx-auto grid grid-cols-1 m-4 px-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {videos.map((video) => (
+            <VideoCard key={video._id} video={video} />
+          ))}
+        </div>
+      )}
       <div className="flex justify-center mt-8">
-        <button className="text-blue-700 pr-2 cursor-pointer text-l"
+        <button
+          className="text-blue-700 pr-2 cursor-pointer text-l"
           onClick={() => router.push("/login")}
         >
-          Sign in 
+          Sign in
         </button>
-         to see more videos.
+        to see more videos.
       </div>
     </div>
   );

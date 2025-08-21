@@ -89,7 +89,7 @@ const FileUpload = ({
         // Abort signal to allow cancellation of the upload if needed.
         abortSignal: abortController.signal,
       });
-      console.log("Upload response:", uploadResponse);
+      // console.log("Upload response:", uploadResponse);
       onUploadSuccess(uploadResponse);
     } catch (error) {
       // Handle specific error types provided by the ImageKit SDK.

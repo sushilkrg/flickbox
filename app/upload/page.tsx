@@ -1,25 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import FileUpload from "../components/FileUpload";
-import { useSession } from "next-auth/react";
 
 const UplaodPage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [visibility, setVisibility] = useState("public");
   const [videoUrl, setVideoUrl] = useState("");
-
-  // const getUserSession = () => {
-  // const { data: session, status } = useSession();
-  // console.log("session.user", session?.user);
-  // console.log("status", status);
-  // };
-  const { data: session, status } = useSession();
-
-  useEffect(() => {
-    console.log("session.user", session?.user);
-    console.log("status", status);
-  }, [session]);
 
   const handleUploadSuccess = async (uploadResponse: any) => {
     const { url } = uploadResponse;
@@ -37,8 +24,6 @@ const UplaodPage = () => {
         description,
         visibility,
         videoUrl,
-        // thumbnailUrl: `${videoUrl}/ik-thumbnail.jpg`,
-        // user: session?.user.id,
       }),
     });
 
@@ -100,16 +85,6 @@ const UplaodPage = () => {
           </select>
         </div>
         <FileUpload onUploadSuccess={handleUploadSuccess} />
-        {/* <div className="flex flex-col w-full md:w-2xl">
-          <label htmlFor="video">Upload Video</label>
-          <input
-            type="file"
-            id="video"
-            name="video"
-            required
-            className="border border-white rounded-md py-2 px-1 "
-          />
-        </div> */}
         {videoUrl && (
           <div>
             <h2>Preview</h2>
