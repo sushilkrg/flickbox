@@ -3,14 +3,12 @@ import React from "react";
 
 const SecondSection = () => {
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-600 text-white">
-      <div className="container mx-auto w-full  flex items-center justify-center flex-col">
+    <div className="h-auto md:h-screen flex items-center justify-center bg-gray-600 text-white">
+      <div className="container mx-auto w-full my-16 flex items-center justify-center flex-col">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
           Where Moments become Movements
         </h2>
         <p className="font-medium mt-4 px-4 text-center max-w-4xl">
-          {/* Every short videos you share has the power to inspire, connect and
-          spark changes. */}
           Every short video you share has the potential to leave a lasting impact by conveying powerful messages in just a few seconds. It can inspire minds, connect people across cultures, and spark conversations or movements that lead to real-world change. With each clip, you're not just sharing content - you're influencing how people think, feel, and act.
         </p>
         <div className="flex justify-around items-center md:gap-10 mt-12">
